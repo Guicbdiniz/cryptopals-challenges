@@ -35,3 +35,12 @@ How to get the 6 bits from the byte slice? I've no idea.
 The best way to do it is probably to use 3 bytes. Those 3 bytes have 24 bits. I can separate those 24 bits into 4 groups of 6 bits.
 
 Actually, why not simply get a slice of ints with all bits from the bytes array and them use them 6 by 6?
+
+The solution is definitely related to the bitwise operators.
+
+- To get the bits from one byte, I must first shift the bits to the right (7 for the first bit in the left, 6 for the second, 5 for the third...) and "remove" the rest of the bits by doing & 1 (which is 00000001).
+  - So 10101010 >> 7 -> 00000001 & 1 -> 00000001 which is 1.
+
+With this, I can create a int array with the bits from the byte slice.
+
+After that, I must use the values from the slice 6 by 6 to create a byte and use this byte to get the correct character from the base 64 table.

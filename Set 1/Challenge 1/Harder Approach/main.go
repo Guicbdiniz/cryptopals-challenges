@@ -91,7 +91,9 @@ func encodeToBase64(value []byte) string {
 		var base64Char byte
 		for j := 0; j < 6; j++ {
 			if i+j < len(bitsFromValue) {
-				base64Char |= byte(bitsFromValue[i+j] << (5 - j))
+				// Shift the byte left by (5 - j) to get the 0 or 1 in the right position and OR it with base64Char to add it to the byte
+				byteToBeAdded := byte(bitsFromValue[i+j] << (5 - j))
+				base64Char = base64Char | byteToBeAdded
 			}
 		}
 		base64StringBuilder.WriteByte(base64Chars[base64Char])
