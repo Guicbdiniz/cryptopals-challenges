@@ -18,7 +18,7 @@ After combining those characters, padding `=` characters can be added so that th
 
 ## Solution
 
-The easiest way to do it is simply using Go's standard library [base64 package](https://pkg.go.dev/encoding/base64) and (hex package)[https://pkg.go.dev/encoding/hex].
+The easiest way to do it is simply using Go's standard library [base64 package](https://pkg.go.dev/encoding/base64) and [hex package](https://pkg.go.dev/encoding/hex).
 
 But, of course, the main idea is to understand the encoding schemas better. So I must create my own functions to deal with the encoding and decoding of strings.
 
